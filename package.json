@@ -1,6 +1,6 @@
 {
   "name": "scaffolding",
-  "version": "0.1",
+  "version": "0.1.0",
   "author": "Kyle Tucker <kyle@asmbs.org>",
   "licenses": [
     {
@@ -9,7 +9,7 @@
     }
   ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">= 0.10.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
