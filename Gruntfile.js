@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     less: {
       test: {
         options: {
-          cleancss: true
+          cleancss: false
         },
         files: {
           'test/css/main.min.css': ['less/main.less']
