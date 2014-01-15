@@ -1,0 +1,113 @@
+
+// Grid Variables ------------------------------------------------------
+
+@grid-cols: 12;
+@grid-gutter: 24px;
+
+@container-sm: (@screen-sm-min - 60);
+@container-md: (@screen-md-min - 60);
+@container-lg: (@screen-lg-min - 60);
+
+
+// Utilities -----------------------------------------------------------
+
+.grid-calc(@i; @n; @type) when (@type = width) {
+  width: percentage((@i / @n));
+}
+.grid-calc(@i; @n; @type) when (@type = offset) {
+  margin-left: percentage((@i / @n));
+}
+.grid-calc(@i; @n; @type) when (@type = push) {
+  left: percentage((@i / @n));
+}
+.grid-calc(@i; @n; @type) when (@type = pull) {
+  right: percentage((@i / @n));
+}
+
+
+// Grid Mixins ---------------------------------------------------------
+
+// Set properties for a grid container
+.make-container(@gutter) {
+  .clearfix();
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+
+// Set properties for a row container
+.make-row(@gutter) {
+  .clearfix();
+  margin-left: (@gutter / -2);
+  margin-right: (@gutter / -2);
+}
+
+// Set base properties for a column
+.make-column-base(@gutter) {
+  position: relative;
+  min-height: 1px;
+  padding-left: (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+
+
+// Grid Framework ------------------------------------------------------
+
+// Build column classes
+.make-column-classes(@cols; @size) {
+
+  .cols(@i; @size) when (@i > 0) {
+    
+    .@{size}-@{i} {
+      float: left;
+      .grid-calc(@i; @cols; width);
+    }
+
+    // Loop
+    .cols((@i - 1); @size);
+  }
+  .cols(@cols; @size);
+
+}
+
+// Grid builder
+// One-stop shop -- builds all the default grid classes at once
+// (grid, row, columns, offsets, pushes, pulls)
+.make-grid(@cols: @grid-cols; @gutter: @grid-gutter) {
+  
+  // Build the grid container class
+  .grid {
+    .make-container(@gutter);
+    @media (min-width: @screen-sm-min) {
+      width: @container-sm;
+    }
+    @media (min-width: @screen-md-min) {
+      width: @container-md;
+    }
+    @media (min-width: @screen-lg-min) {
+      width: @container-lg;
+    }
+  }
+  // Build the row container class
+  .row { .make-row(@gutter); }
+
+  // Build the .col global class
+  .col { .make-column-base(@gutter); }
+
+  // Build all column classes (regular columns, offsets, pushes and pulls)
+  .make-column-classes(@cols; xs);
+  @media (min-width: @screen-sm-min) {
+    .make-column-classes(@cols; sm);
+  }
+  @media (min-width: @screen-md-min) {
+    .make-column-classes(@cols; md);
+  }
+  @media (min-width: @screen-lg-min) {
+    .make-column-classes(@cols; lg);
+  }
+}
+
+// Construct Grid ------------------------------------------------------
+
+.make-grid(16);
