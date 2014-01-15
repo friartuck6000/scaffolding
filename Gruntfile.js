@@ -10,14 +10,14 @@ module.exports = function(grunt) {
           cleancss: false
         },
         files: {
-          'test/css/main.min.css': ['less/main.less']
+          'test/css/main.min.css': ['test/less/main.less']
         }
       }
     },
 
     watch: {
       test: {
-        files: ['less/*.less'],
+        files: ['less/*.less','test/less/*.less'],
         tasks: ['less:test']
       }
     }
