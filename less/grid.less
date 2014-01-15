@@ -52,6 +52,110 @@
   padding-right: (@gutter / 2);
 }
 
+// Set up a standard column
+.make-xs-column(@i; @cols: @grid-cols) {
+  .grid-calc(@i; @cols; width);
+}
+.make-sm-column(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-sm-min) {
+    .grid-calc(@i; @cols; width);
+  }
+}
+.make-md-column(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-md-min) {
+    .grid-calc(@i; @cols; width);
+  }
+}
+.make-lg-column(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-lg-min) {
+    .grid-calc(@i; @cols; width);
+  }
+}
+
+// One-line setup combines .make-column-base and .make-*-column()
+.make-column(@i; @size; @cols: @grid-cols; @gutter: @grid-gutter) {
+
+  // Set base properties
+  .make-column-base(@gutter);
+
+  // Pick mixin based on @size
+  .make(@i; @cols; @size) when (@size = xs) {
+    .make-xs-column(@i; @cols);
+  }
+  .make(@i; @cols; @size) when (@size = sm) {
+    .make-sm-column(@i; @cols);
+  }
+  .make(@i; @cols; @size) when (@size = md) {
+    .make-md-column(@i; @cols);
+  }
+  .make(@i; @cols; @size) when (@size = lg) {
+    .make-lg-column(@i; @cols);
+  }
+
+  // Make it
+  .make(@i; @cols; @size);
+}
+
+// Set up an offset column
+.make-xs-offset(@i; @cols) {
+  .grid-calc(@i; @cols; offset);
+}
+.make-sm-offset(@i; @cols) {
+  @media (min-width: @screen-sm-min) {
+    .grid-calc(@i; @cols; offset);
+  }
+}
+.make-md-offset(@i; @cols) {
+  @media (min-width: @screen-md-min) {
+    .grid-calc(@i; @cols; offset);
+  }
+}
+.make-lg-offset(@i; @cols) {
+  @media (min-width: @screen-lg-min) {
+    .grid-calc(@i; @cols; offset);
+  }
+}
+
+// Set up a push column
+.make-xs-push(@i; @cols) {
+  .grid-calc(@i; @cols; push);
+}
+.make-sm-push(@i; @cols) {
+  @media (min-width: @screen-sm-min) {
+    .grid-calc(@i; @cols; push);
+  }
+}
+.make-md-push(@i; @cols) {
+  @media (min-width: @screen-md-min) {
+    .grid-calc(@i; @cols; push);
+  }
+}
+.make-lg-push(@i; @cols) {
+  @media (min-width: @screen-lg-min) {
+    .grid-calc(@i; @cols; push);
+  }
+}
+
+// Set up a pull column 
+.make-xs-pull(@i; @cols) {
+  .grid-calc(@i; @cols; pull);
+}
+.make-sm-pull(@i; @cols) {
+  @media (min-width: @screen-sm-min) {
+    .grid-calc(@i; @cols; pull);
+  }
+}
+.make-md-pull(@i; @cols) {
+  @media (min-width: @screen-md-min) {
+    .grid-calc(@i; @cols; pull);
+  }
+}
+.make-lg-pull(@i; @cols) {
+  @media (min-width: @screen-lg-min) {
+    .grid-calc(@i; @cols; pull);
+  }
+}
+
 
 // Grid Framework ------------------------------------------------------
 
