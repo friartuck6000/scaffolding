@@ -1,35 +1,13 @@
 
-// Screen breakpoints --------------------------------------------------
+// http://git.io/normalize
+@import 'normalize.less';
 
-// X-Small -- Expanded to include the iPhone 5+ 4" display
-@screen-xs: 568px;
-@screen-xs-min: @screen-xs;
+// Sets variables for media query breakpoints
+@import 'screen.less';
 
-// Small
-@screen-sm: 768px;
-@screen-sm-min: @screen-sm;
+// Defines utility mixins like .clearfix() and responsive utilities
+// for showing/hiding elements based on screen size.
+@import 'utilities.less';
 
-// Medium
-@screen-md: 1024px;
-@screen-md-min: @screen-md;
-
-// Large
-@screen-lg: 1200px;
-@screen-lg-min: @screen-lg;
-
-// Maximums (a-max = b-min - 1);
-@screen-xs-max: (@screen-sm-min - 1);
-@screen-sm-max: (@screen-md-min - 1);
-@screen-md-max: (@screen-lg-min - 1);
-
-
-// Grid Variables ------------------------------------------------------
-
-@grid-cols: 12;
-@grid-gutter: 24px;
-
-
-// Grid Framework ------------------------------------------------------
-
-
-// Construct Grid ------------------------------------------------------
+// The good stuff -- the grid framework
+@import 'grid.less';
