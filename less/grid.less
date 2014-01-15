@@ -12,6 +12,7 @@
 // Utilities -----------------------------------------------------------
 
 .grid-calc(@i; @n; @type) when (@type = width) {
+  float: left;
   width: percentage((@i / @n));
 }
 .grid-calc(@i; @n; @type) when (@type = offset) {
@@ -28,7 +29,7 @@
 // Grid Mixins ---------------------------------------------------------
 
 // Set properties for a grid container
-.make-container(@gutter) {
+.make-container(@gutter: @grid-gutter) {
   .clearfix();
   margin-left: auto;
   margin-right: auto;
@@ -37,14 +38,14 @@
 }
 
 // Set properties for a row container
-.make-row(@gutter) {
+.make-row(@gutter: @grid-gutter) {
   .clearfix();
   margin-left: (@gutter / -2);
   margin-right: (@gutter / -2);
 }
 
 // Set base properties for a column
-.make-column-base(@gutter) {
+.make-column-base(@gutter: @grid-gutter) {
   position: relative;
   min-height: 1px;
   padding-left: (@gutter / 2);
@@ -59,9 +60,24 @@
 
   .cols(@i; @size) when (@i > 0) {
     
+    // Column
     .@{size}-@{i} {
-      float: left;
       .grid-calc(@i; @cols; width);
+    }
+
+    // Offset
+    .@{size}-offset-@{i} {
+      .grid-calc(@i; @cols; offset);
+    }
+
+    // Push
+    .@{size}-push-@{i} {
+      .grid-calc(@i; @cols; push);
+    }
+
+    // Pull
+    .@{size}-pull-@{i} {
+      .grid-calc(@i; @cols; pull);
     }
 
     // Loop
@@ -79,6 +95,7 @@
   // Build the grid container class
   .grid {
     .make-container(@gutter);
+
     @media (min-width: @screen-sm-min) {
       width: @container-sm;
     }
@@ -108,6 +125,7 @@
   }
 }
 
-// Construct Grid ------------------------------------------------------
+// Scaffolding doesn't actually build the grid for you, just in case you're
+// interested in using the framework your own way. To build a standard grid
+// in your app, just call .make-grid() in your main less file (or wherever).
 
-.make-grid(16);
