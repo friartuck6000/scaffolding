@@ -1,0 +1,56 @@
+
+// CSS3 property shortcuts ---------------------------------------------
+
+// Box shadow
+.box-shadow(@val) {
+  -webkit-box-shadow: @val;
+     -moz-box-shadow: @val;
+          box-shadow: @val;
+}
+
+// Border radius
+.border-radius(@val) {
+  -webkit-border-radius: @val;
+     -moz-border-radius: @val;
+          border-radius: @val;
+}
+
+// Single-corner border radius
+.border-top-left-radius(@r)  {
+  -webkit-border-top-left-radius: @r;
+     -moz-border-top-left-radius: @r;
+          border-top-left-radius: @r;
+}
+.border-top-right-radius(@r)  {
+  -webkit-border-top-right-radius: @r;
+     -moz-border-top-right-radius: @r;
+          border-top-right-radius: @r;
+}
+.border-bottom-left-radius(@r)  {
+  -webkit-border-bottom-left-radius: @r;
+     -moz-border-bottom-left-radius: @r;
+          border-bottom-left-radius: @r;
+}
+.border-bottom-right-radius(@r)  {
+  -webkit-border-bottom-right-radius: @r;
+     -moz-border-bottom-right-radius: @r;
+          border-bottom-right-radius: @r;
+}
+
+// Single-side border radius
+.border-radius-side(@r; @side) when (@side = top) {
+  .border-top-left-radius(@r);
+  .border-top-right-radius(@r);
+}
+.border-radius-side(@r: @side) when (@side = right) {
+  .border-top-right-radius(@r);
+  .border-bottom-right-radius(@r);
+}
+.border-radius-side(@r; @side) when (@side = bottom) {
+  .border-bottom-left-radius(@r);
+  .border-bottom-right-radius(@r);
+}
+.border-radius-side(@r; @side) when (@side = left) {
+  .border-top-left-radius(@r);
+  .border-bottom-left-radius(@r);
+}
