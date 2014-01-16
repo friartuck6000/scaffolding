@@ -37,6 +37,28 @@
   padding-right: (@gutter / 2);
 }
 
+// Create a container for any selector using the default
+// (or overridden) container widths
+.make-responsive-container(@gutter: @grid-gutter;
+  @width-sm: @container-sm;
+  @width-md: @container-md;
+  @width-lg: @container-lg) {
+
+  // Set default properties
+  .make-container(@gutter);
+
+  // Set breakpoint widths
+  @media (min-width: @screen-sm-min) {
+    width: @width-sm;
+  }
+  @media (min-width: @screen-md-min) {
+    width: @width-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @width-lg;
+  }
+}
+
 // Set properties for a row container
 .make-row(@gutter: @grid-gutter) {
   .clearfix();
@@ -198,17 +220,7 @@
   
   // Build the grid container class
   .container {
-    .make-container(@gutter);
-
-    @media (min-width: @screen-sm-min) {
-      width: @container-sm;
-    }
-    @media (min-width: @screen-md-min) {
-      width: @container-md;
-    }
-    @media (min-width: @screen-lg-min) {
-      width: @container-lg;
-    }
+    .make-responsive-container(@gutter; @container-sm; @container-md; @container-lg);
   }
   // Build the row container class
   .row { .make-row(@gutter); }
