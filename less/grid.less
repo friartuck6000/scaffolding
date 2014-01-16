@@ -193,11 +193,11 @@
 
 // Grid builder
 // One-stop shop -- builds all the default grid classes at once
-// (grid, row, columns, offsets, pushes, pulls)
+// (container, row, columns, offsets, pushes, pulls)
 .make-grid(@cols: @grid-cols; @gutter: @grid-gutter) {
   
   // Build the grid container class
-  .grid {
+  .container {
     .make-container(@gutter);
 
     @media (min-width: @screen-sm-min) {
