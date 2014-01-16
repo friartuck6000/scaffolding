@@ -5,15 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>test</title>
   <link href="css/main.min.css" rel="stylesheet" type="text/css" media="all" />
-  <style type="text/css">
-  p { background: #c0c0c0 }
-  </style>
   </head>
   <body>
-  <div class="grid">
+  <div class="container">
+  <h1>Default grid classes</h1>
     <div class="row">
-      <div class="col sm-3"><p>.col .sm-4</p></div>
-      <div id="custom-column"><p>#custom-column</p></div>
+      <div class="col md-3 sm-6"><pre>.col .md-3 .sm-6</pre></div>
+      <div class="col md-9 sm-6"><pre>.col .md-9 .sm-6</pre></div>
+      <div class="col sm-4 xs-6"><pre>.col .sm-4 .xs-6</pre></div>
+      <div class="col sm-4 xs-6"><pre>.col .sm-4 .xs-6</pre></div>
+      <div class="col sm-4 hidden-xs"><pre>.col .sm-4 .xs-hidden</pre></div>
+    </div>
+    <div class="row">
+      <div class="col sm-4"><pre>.col .sm-4</pre></div>
+      <div class="col sm-4"><pre>.col .sm-4</pre></div>
+      <div class="col sm-4"><pre>.col .sm-4</pre></div>
+    </div>
+    <div class="row">
+      <div class="col sm-4 sm-push-8 xs-6">
+        <pre>.col .sm-4 .sm-push-8 .xs-6</pre>
+        <p>This is the first child of <code>.row</code>.</p>
+      </div>
+      <div class="col sm-8 sm-pull-4 xs-6">
+        <pre>.col .sm-8 .sm-pull-4 .xs-6</pre>
+        <p>This is the second child of <code>.row</code>.</p>
+      </div>
+    </div>
+  </div>
+  <div id="custom-grid">
+    <h1>Custom classes using grid mixins</h1>
+    <div id="custom-row">
+      <section id="primary">
+        <p>This is a custom container, <code>#primary</code>.</p>
+      </section>
+      <section id="secondary">
+        <p>This is a custom container, <code>#secondary</code>.</p>
+      </section>
     </div>
   </div>
   </body>

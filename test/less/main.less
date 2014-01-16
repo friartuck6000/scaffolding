@@ -4,6 +4,29 @@
 
 .make-grid();
 
-#custom-column {
-  .make-column(9, sm);
+pre {
+  background: #e7e7e7;
+  border: 1px solid #c0c0c0;
+  .border-radius(2px);
+  padding: 6px;
+}
+
+@custom-grid-cols: 16;
+@custom-gutter: 60px;
+
+#custom-grid {
+  .make-responsive-container(@custom-gutter);
+}
+
+#custom-row {
+  .make-row(@custom-gutter);
+}
+
+#primary {
+  .make-column(4; sm; @custom-grid-cols; @custom-gutter);
+  p { background: fade(#0054a6, 10%) }
+}
+#secondary {
+  .make-column(12; sm; @custom-grid-cols; @custom-gutter);
+  p { background: fade(#839448, 15%) }
 }
