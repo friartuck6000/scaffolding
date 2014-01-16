@@ -2,6 +2,13 @@
   "name": "scaffolding",
   "version": "0.1.0",
   "author": "Kyle Tucker <kyle@asmbs.org>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/friartuck6000/scaffolding.git"
+  },
+  "bugs": {
+    "url": "https://github.com/friartuck6000/scaffolding/issues"
+  },
   "licenses": [
     {
       "type": "MIT",
