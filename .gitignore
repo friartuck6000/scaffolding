@@ -1,0 +1,4 @@
+.DS_Store
+
+# Don't track node_modules
+/node_modules/
