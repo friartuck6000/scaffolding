@@ -7,12 +7,14 @@
           box-sizing: @model;
 }
 
-*,
-*:before,
-*:after {
-  .box-sizing();
-}
+.reset() {
+  *,
+  *:before,
+  *:after {
+    .box-sizing();
+  }
 
-html {
-  font-size: 87.5%;
+  html {
+    font-size: 87.5%;
+  }
 }
