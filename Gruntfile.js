@@ -1,9 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    // Read package.json
     pkg: grunt.file.readJSON('package.json'),
-
     less: {
       test: {
         options: {
@@ -14,7 +12,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     watch: {
       test: {
         files: ['less/*.less','test/less/*.less'],
@@ -28,7 +25,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  // Register tasks
+  // Default task
   grunt.registerTask('default', ['less:test']);
   
 };
