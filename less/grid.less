@@ -119,60 +119,60 @@
 }
 
 // Set up an offset column
-.make-xs-offset(@i; @cols) {
+.make-xs-offset(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; offset);
 }
-.make-sm-offset(@i; @cols) {
+.make-sm-offset(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; offset);
   }
 }
-.make-md-offset(@i; @cols) {
+.make-md-offset(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; offset);
   }
 }
-.make-lg-offset(@i; @cols) {
+.make-lg-offset(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
     .grid-calc(@i; @cols; offset);
   }
 }
 
 // Set up a push column
-.make-xs-push(@i; @cols) {
+.make-xs-push(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; push);
 }
-.make-sm-push(@i; @cols) {
+.make-sm-push(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; push);
   }
 }
-.make-md-push(@i; @cols) {
+.make-md-push(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; push);
   }
 }
-.make-lg-push(@i; @cols) {
+.make-lg-push(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
     .grid-calc(@i; @cols; push);
   }
 }
 
 // Set up a pull column 
-.make-xs-pull(@i; @cols) {
+.make-xs-pull(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; pull);
 }
-.make-sm-pull(@i; @cols) {
+.make-sm-pull(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; pull);
   }
 }
-.make-md-pull(@i; @cols) {
+.make-md-pull(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; pull);
   }
 }
-.make-lg-pull(@i; @cols) {
+.make-lg-pull(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
     .grid-calc(@i; @cols; pull);
   }
