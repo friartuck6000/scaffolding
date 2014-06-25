@@ -57,6 +57,12 @@
     .make-visible(@display);
   }
 }
+.visible-print(@display: block;) {
+  .make-hidden();
+  @media print {
+    .make-visible(@display);
+  }
+}
 
 // Invisibility mixins
 .hidden-xs(@display: block) {
@@ -80,6 +86,12 @@
 .hidden-lg(@display: block) {
   .make-visible(@display);
   @media (min-width: @screen-lg-min) {
+    .make-hidden();
+  }
+}
+.hidden-print(@display: block) {
+  .make-visible(@display);
+  @media print {
     .make-hidden();
   }
 }
