@@ -35,30 +35,29 @@
 // Visibility mixins
 .visible-xs(@display: block) {
   .make-hidden();
-  @media (max-width: @screen-xs-max) {
+  @media screen and (max-width: @screen-xs-max) {
     .make-visible(@display);
   }
 }
 .visible-sm(@display: block) {
   .make-hidden();
-  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     .make-visible(@display);
   }
 }
 .visible-md(@display: block) {
   .make-hidden();
-  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  @media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .make-visible(@display);
   }
 }
 .visible-lg(@display: block) {
   .make-hidden();
-  @media (min-width: @screen-lg-min) {
+  @media screen and (min-width: @screen-lg-min) {
     .make-visible(@display);
   }
 }
 .visible-print(@display: block;) {
-  .make-hidden();
   @media print {
     .make-visible(@display);
   }
@@ -67,30 +66,29 @@
 // Invisibility mixins
 .hidden-xs(@display: block) {
   .make-visible(@display);
-  @media (max-width: @screen-xs-max) {
+  @media screen and (max-width: @screen-xs-max) {
     .make-hidden();
   }
 }
 .hidden-sm(@display: block) {
   .make-visible(@display);
-  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     .make-hidden();
   }
 }
 .hidden-md(@display: block) {
   .make-visible(@display);
-  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  @media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .make-hidden();
   }
 }
 .hidden-lg(@display: block) {
   .make-visible(@display);
-  @media (min-width: @screen-lg-min) {
+  @media screen and (min-width: @screen-lg-min) {
     .make-hidden();
   }
 }
 .hidden-print(@display: block) {
-  .make-visible(@display);
   @media print {
     .make-hidden();
   }
