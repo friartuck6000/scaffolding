@@ -1,8 +1,12 @@
+//
+// Utilities
+// =============================================================================================
 
-// General utilities ---------------------------------------------------
 
 // Clearfix
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
+// ---------------------------------------------------------------------------------------------
+
 .clearfix() {
   &:before,
   &:after {
@@ -15,7 +19,19 @@
 }
 
 
-// Responsive utilities ------------------------------------------------
+// Rendering utilities
+// ---------------------------------------------------------------------------------------------
+
+// Change box model
+.box-sizing(@model: border-box) {
+  -webkit-box-sizing: @model;
+     -moz-box-sizing: @model;
+          box-sizing: @model;
+}
+
+
+// Responsive utilities
+// ---------------------------------------------------------------------------------------------
 
 // Responsive visibility and invisibility, a la Bootstrap, but these
 // support inline display (or whatever you set @display to), except
@@ -93,3 +109,5 @@
     .make-hidden();
   }
 }
+
+// =============================================================================================
