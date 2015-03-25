@@ -23,11 +23,11 @@ of the following:
 
 1.  **Just call `make-grid(@cols; @gutter);`.** This will generate generic grid classes for
     a `@cols`-column grid. You can also omit both arguments, which will generate a 12-column
-    grid with a 24-pixel gutter. The generic grid classes are:
+    grid with a 30-pixel gutter. The generic grid classes are:
     -   `.container` for a responsive container 
     -   `.row` for a grid row
     -   `.col` designates a column and should be paired with one or more of the below
-    -   `.xs-*`, `.sm-*`, `.md-*`, `.lg-*` for a column with the specified width and breakpoint
+    -   `.xs-*`, `.sm-*`, `.md-*`, `.lg-*`, `.xl-*` for a column with the specified width and breakpoint
         (can be combined just like in bootstrap)
     -   `.(size)-offset-*`, `.(size)-push-*`, `.(size)-pull-*`, where `(size)` can be either
         "xs," "sm," "md" or "lg"  
@@ -40,6 +40,6 @@ of the following:
         omitted and the default value will be used.
     -   `.make-column(@width; @size; @total; @gutter)` will turn your selector into a column
         `@width` segments wide, based on the total number of columns (`@total`). The `@size`
-        attribute should again be either "xs," "sm," "md" or "lg". `@total` and `@gutter` are
+        attribute should again be either "xs," "sm," "md", "lg" or "xl". `@total` and `@gutter` are
         optional and will fall back to their defaults if omitted.
 
