@@ -1,15 +1,10 @@
-
-// Grid Variables ------------------------------------------------------
-
-@grid-cols: 12;
-@grid-gutter: 24px;
-
-@container-sm: (@screen-sm-min - 60);
-@container-md: (@screen-md-min - 60);
-@container-lg: (@screen-lg-min - 60);
+//
+// Grid system
+// =============================================================================================
 
 
-// Utilities -----------------------------------------------------------
+// Calculators
+// ---------------------------------------------------------------------------------------------
 
 .grid-calc(@i; @n; @type) when (@type = width) {
   float: left;
@@ -26,209 +21,225 @@
 }
 
 
-// Grid Mixins ---------------------------------------------------------
+// Grid framework
+// ---------------------------------------------------------------------------------------------
 
-// Set properties for a grid container
-.make-container(@gutter: @grid-gutter) {
+// Container -----------------------------------------------------------
+
+// Set container defaults
+.container-defaults(@gutter: @grid-gutter) {
   .clearfix();
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: (@gutter / 2);
-  padding-right: (@gutter / 2);
+
+  margin-left:    auto;
+  margin-right:   auto;
+  padding-left:   (@gutter / 2);
+  padding-right:  (@gutter / 2);
 }
 
-// Create a container for any selector using the default
-// (or overridden) container widths
-.make-responsive-container(@gutter: @grid-gutter;
-  @width-sm: @container-sm;
-  @width-md: @container-md;
-  @width-lg: @container-lg) {
+// Make a responsive container
+.make-container(
+  @gutter: @grid-gutter,
+  @sm: @container-sm,
+  @md: @container-md,
+  @lg: @container-lg,
+  @xl: @container-xl
+) {
+  .container-defaults(@gutter);
 
-  // Set default properties
-  .make-container(@gutter);
-
-  // Set breakpoint widths
-  @media (min-width: @screen-sm-min) {
-    width: @width-sm;
+  @media only screen and (min-width: @screen-sm-min) {
+    width: @sm;
   }
-  @media (min-width: @screen-md-min) {
-    width: @width-md;
+  @media only screen and (min-width: @screen-md-min) {
+    width: @md;
   }
-  @media (min-width: @screen-lg-min) {
-    width: @width-lg;
+  @media only screen and (min-width: @screen-lg-min) {
+    width: @lg;
+  }
+  @media only screen and (min-width: @screen-xl-min) {
+    width: @xl;
   }
 }
 
-// Set properties for a row container
+// Row -----------------------------------------------------------------
+
 .make-row(@gutter: @grid-gutter) {
   .clearfix();
-  margin-left: (@gutter / -2);
-  margin-right: (@gutter / -2);
+
+  margin-left:   -(@gutter / 2);
+  margin-right:  -(@gutter / 2);
 }
 
-// Set base properties for a column
-.make-column-base(@gutter: @grid-gutter) {
-  position: relative;
-  min-height: 1px;
-  padding-left: (@gutter / 2);
-  padding-right: (@gutter / 2);
+// Columns --------------------------------------------------------------
+
+// Set base column properties
+.column-defaults(@gutter: @grid-gutter) {
+  position:       relative;
+  min-height:     @col-min-height;
+  padding-left:   (@gutter / 2);
+  padding-right:  (@gutter / 2);
 }
 
-// Set up a standard column
-.make-xs-column(@i; @cols: @grid-cols) {
+// Sizes
+.xs-column(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; width);
 }
-.make-sm-column(@i; @cols: @grid-cols) {
+.sm-column(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; width);
   }
 }
-.make-md-column(@i; @cols: @grid-cols) {
+.md-column(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; width);
   }
 }
-.make-lg-column(@i; @cols: @grid-cols) {
+.lg-column(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
     .grid-calc(@i; @cols; width);
   }
 }
-
-// One-line setup combines .make-column-base and .make-*-column()
-.make-column(@i; @size; @cols: @grid-cols; @gutter: @grid-gutter) {
-
-  // Set base properties
-  .make-column-base(@gutter);
-
-  // Pick mixin based on @size
-  .make(@i; @cols; @size) when (@size = xs) {
-    .make-xs-column(@i; @cols);
+.xl-column(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-xl-min) {
+    .grid-calc(@i; @cols; width);
   }
-  .make(@i; @cols; @size) when (@size = sm) {
-    .make-sm-column(@i; @cols);
-  }
-  .make(@i; @cols; @size) when (@size = md) {
-    .make-md-column(@i; @cols);
-  }
-  .make(@i; @cols; @size) when (@size = lg) {
-    .make-lg-column(@i; @cols);
-  }
-
-  // Make it
-  .make(@i; @cols; @size);
 }
 
-// Set up an offset column
-.make-xs-offset(@i; @cols: @grid-cols) {
+// Offsets -------------------------------------------------------------
+
+.xs-offset(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; offset);
 }
-.make-sm-offset(@i; @cols: @grid-cols) {
+.sm-offset(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; offset);
   }
 }
-.make-md-offset(@i; @cols: @grid-cols) {
+.md-offset(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; offset);
   }
 }
-.make-lg-offset(@i; @cols: @grid-cols) {
+.lg-offset(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
     .grid-calc(@i; @cols; offset);
   }
 }
+.xl-offset(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-xl-min) {
+    .grid-calc(@i; @cols; offset);
+  }
+}
 
-// Set up a push column
-.make-xs-push(@i; @cols: @grid-cols) {
+// Pushes --------------------------------------------------------------
+
+.xs-push(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; push);
 }
-.make-sm-push(@i; @cols: @grid-cols) {
+.sm-push(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; push);
   }
 }
-.make-md-push(@i; @cols: @grid-cols) {
+.md-push(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; push);
   }
 }
-.make-lg-push(@i; @cols: @grid-cols) {
+.lg-push(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
     .grid-calc(@i; @cols; push);
   }
 }
+.xl-push(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-xl-min) {
+    .grid-calc(@i; @cols; push);
+  }
+}
 
-// Set up a pull column 
-.make-xs-pull(@i; @cols: @grid-cols) {
+// Pulls ---------------------------------------------------------------
+
+.xs-pull(@i; @cols: @grid-cols) {
   .grid-calc(@i; @cols; pull);
 }
-.make-sm-pull(@i; @cols: @grid-cols) {
+.sm-pull(@i; @cols: @grid-cols) {
   @media (min-width: @screen-sm-min) {
     .grid-calc(@i; @cols; pull);
   }
 }
-.make-md-pull(@i; @cols: @grid-cols) {
+.md-pull(@i; @cols: @grid-cols) {
   @media (min-width: @screen-md-min) {
     .grid-calc(@i; @cols; pull);
   }
 }
-.make-lg-pull(@i; @cols: @grid-cols) {
+.lg-pull(@i; @cols: @grid-cols) {
   @media (min-width: @screen-lg-min) {
+    .grid-calc(@i; @cols; pull);
+  }
+}
+.xl-pull(@i; @cols: @grid-cols) {
+  @media (min-width: @screen-xl-min) {
     .grid-calc(@i; @cols; pull);
   }
 }
 
 
-// Grid Framework ------------------------------------------------------
+// Builder
+// ---------------------------------------------------------------------------------------------
 
-// Build column classes
+// Column class loop ---------------------------------------------------
+
 .make-column-classes(@cols; @size) {
 
   .cols(@i; @size) when (@i > 0) {
-    
     // Column
     .@{size}-@{i} {
       .grid-calc(@i; @cols; width);
     }
-
     // Offset
     .@{size}-offset-@{i} {
       .grid-calc(@i; @cols; offset);
     }
-
     // Push
     .@{size}-push-@{i} {
       .grid-calc(@i; @cols; push);
     }
-
     // Pull
     .@{size}-pull-@{i} {
       .grid-calc(@i; @cols; pull);
     }
-
     // Loop
     .cols((@i - 1); @size);
   }
-  .cols(@cols; @size);
 
+  .cols(@cols; @size);
 }
 
-// Grid builder
-// One-stop shop -- builds all the default grid classes at once
-// (container, row, columns, offsets, pushes, pulls)
+// Grid builder --------------------------------------------------------
+
 .make-grid(@cols: @grid-cols; @gutter: @grid-gutter) {
-  
-  // Build the grid container class
+
+  // Build container class
   .container {
-    .make-responsive-container(@gutter; @container-sm; @container-md; @container-lg);
+    .make-container(
+      @gutter;
+      @container-sm;
+      @container-md;
+      @container-lg;
+      @container-xl
+    );
   }
-  // Build the row container class
-  .row { .make-row(@gutter); }
 
-  // Build the .col global class
-  .col { .make-column-base(@gutter); }
+  // Build row class
+  .row {
+    .make-row(@gutter);
+  }
 
-  // Build all column classes (regular columns, offsets, pushes and pulls)
+  // Build base column class
+  .col {
+    .column-defaults(@gutter);
+  }
+
+  // Build individual column classes
   .make-column-classes(@cols; xs);
   @media (min-width: @screen-sm-min) {
     .make-column-classes(@cols; sm);
@@ -239,9 +250,10 @@
   @media (min-width: @screen-lg-min) {
     .make-column-classes(@cols; lg);
   }
+  @media (min-width: @screen-xl-min) {
+    .make-column-classes(@cols; xl);
+  }
 }
 
-// Scaffolding doesn't actually build the grid for you, just in case you're
-// interested in using the framework your own way. To build a standard grid
-// in your app, just call .make-grid() in your main less file (or wherever).
 
+// =============================================================================================
