@@ -1,31 +1,37 @@
 module.exports = function(grunt) {
 
+  // Load tasks
+  require('load-grunt-tasks')(grunt);
+
+  // Show task time
+  require('time-grunt')(grunt);
+
   grunt.initConfig({
+    // Read package.json
     pkg: grunt.file.readJSON('package.json'),
+
+    // Paths
+    path: {
+      less: 'test/less',
+      css: 'test/css'
+    },
+
     less: {
       test: {
         options: {
-          cleancss: false
+          compress: false
         },
         files: {
-          'test/css/main.min.css': ['test/less/main.less']
+          '<%= path.css %>/default.css' : '<%= path.less %>/_default.less'
         }
       }
-    },
-    watch: {
-      test: {
-        files: ['less/*.less','test/less/*.less'],
-        tasks: ['less:test']
-      }
     }
-
   });
 
-  // Load tasks
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  // Build
+  grunt.registerTask('build-test', ['less:test']);
 
   // Default task
-  grunt.registerTask('default', ['less:test']);
-  
+  grunt.registerTask('default', ['build-test']);
+
 };
