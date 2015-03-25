@@ -12,19 +12,19 @@
 .container:after {
   clear: both;
 }
-@media (min-width: 768px) {
+@media (min-width: 570px) {
   .container {
-    width: 708px;
+    width: 510px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 720px) {
   .container {
-    width: 964px;
+    width: 660px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .container {
-    width: 1140px;
+    width: 900px;
   }
 }
 .row {
@@ -201,7 +201,7 @@
 .xs-pull-1 {
   right: 8.33333333%;
 }
-@media (min-width: 768px) {
+@media (min-width: 570px) {
   .sm-12 {
     float: left;
     width: 100%;
@@ -359,7 +359,7 @@
     right: 8.33333333%;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 720px) {
   .md-12 {
     float: left;
     width: 100%;
@@ -517,7 +517,7 @@
     right: 8.33333333%;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .lg-12 {
     float: left;
     width: 100%;
