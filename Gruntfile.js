@@ -25,6 +25,13 @@ module.exports = function(grunt) {
           '<%= path.css %>/default.css' : '<%= path.less %>/_default.less'
         }
       }
+    },
+
+    watch: {
+      all: {
+        files: ['less/**/*.less'],
+        tasks: ['less:test']
+      },
     }
   });
 
