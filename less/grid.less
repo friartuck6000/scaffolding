@@ -85,26 +85,26 @@
   .grid-calc(@i; @cols; width);
 }
 .sm-column(@i; @cols: @grid-cols; @gutter: @grid-gutter) {
+  .column-defaults(@gutter);
   @media (min-width: @screen-sm-min) {
-    .column-defaults(@gutter);
     .grid-calc(@i; @cols; width);
   }
 }
 .md-column(@i; @cols: @grid-cols; @gutter: @grid-gutter) {
+  .column-defaults(@gutter);
   @media (min-width: @screen-md-min) {
-    .column-defaults(@gutter);
     .grid-calc(@i; @cols; width);
   }
 }
 .lg-column(@i; @cols: @grid-cols; @gutter: @grid-gutter) {
+  .column-defaults(@gutter);
   @media (min-width: @screen-lg-min) {
-    .column-defaults(@gutter);
     .grid-calc(@i; @cols; width);
   }
 }
 .xl-column(@i; @cols: @grid-cols; @gutter: @grid-gutter) {
+  .column-defaults(@gutter);
   @media (min-width: @screen-xl-min) {
-    .column-defaults(@gutter);
     .grid-calc(@i; @cols; width);
   }
 }
