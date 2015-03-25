@@ -22,14 +22,15 @@ module.exports = function(grunt) {
           compress: false
         },
         files: {
-          '<%= path.css %>/default.css' : '<%= path.less %>/_default.less'
+          '<%= path.css %>/default.css' : '<%= path.less %>/_default.less',
+          '<%= path.css %>/custom.css' : '<%= path.less %>/_custom.less'
         }
       }
     },
 
     watch: {
       all: {
-        files: ['less/**/*.less'],
+        files: ['less/**/*.less','test/less/**/*.less'],
         tasks: ['less:test']
       },
     }
