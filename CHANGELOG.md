@@ -1,5 +1,9 @@
 # Changelog
 
+### [1.0.3](https://github.com/friartuck6000/scaffolding/tree/v1.0.3)
+
+- Corrected position of column-defaults reference
+
 ### [1.0.2](https://github.com/friartuck6000/scaffolding/tree/v1.0.2)
 
 - Forgot to include gutter references
